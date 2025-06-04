@@ -1,6 +1,6 @@
 import { Document } from 'mongoose';
 
-export interface User extends Document {
+export interface IUser extends Document {
     username: string;
     email: string;
     password: string;
@@ -8,10 +8,10 @@ export interface User extends Document {
     updatedAt: Date;
 }
 
-export interface Note extends Document {
+export interface INote extends Document {
     title: string;
     content: string;
-    user: User['_id'];
+    user: IUser['_id'];
     createdAt: Date;
     updatedAt: Date;
 }
