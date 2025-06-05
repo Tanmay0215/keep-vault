@@ -30,7 +30,7 @@ export const createNote = async (req: Request, res: Response) => {
 // Get all notes for a user
 export const getAllNotes = async (req: Request, res: Response) => {
     try {
-        const userId = req.params.userId;
+        const userId = req.body.userId || req.params.userId;
         if (!userId) {
             return res.status(400).json({ message: 'User ID is required' });
         }

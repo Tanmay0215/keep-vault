@@ -3,6 +3,14 @@ import User from '../models/user.model';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+// Cookie options
+const cookieOptions = {
+    httpOnly: true, // Prevents client-side access to the cookie
+    secure: process.env.NODE_ENV === 'production', // Only sends cookie over HTTPS in production
+    sameSite: 'strict' as const,
+    maxAge: 360000 * 1000, // Convert hours to milliseconds
+};
+
 export const getUser = async (req: Request, res: Response) => {
     const userId = req.params.id;
     try {
@@ -34,19 +42,25 @@ export const registerUser = async (req: Request, res: Response) => {
 
         user.password = await bcrypt.hash(password, 10);
         await user.save();
+
         const payload = {
             user: {
                 id: user.id,
             },
         };
+
         const token = jwt.sign(
             payload,
-            process.env.JWT_SECRET || 'yourSecretToken', // Use environment variable for secret
-            { expiresIn: 360000 } // Token expires in 100 hours
+            process.env.JWT_SECRET || 'yourSecretToken',
+            { expiresIn: 360000 }
         );
 
-        res.cookie('token', token)
-        return res.status(201).json({ user: { id: user.id, username: user.username, email: user.email } });
+        // Set JWT as an HTTP-only cookie
+        res.cookie('token', token, cookieOptions);
+
+        return res.status(201).json({
+            user: { id: user.id, username: user.username, email: user.email }
+        });
     } catch (error) {
         console.error(error);
         if (error instanceof Error) {
@@ -77,14 +91,20 @@ export const loginUser = async (req: Request, res: Response) => {
             user: {
                 id: user.id,
             },
-        };        // Sign token and return response
+        };
+
         const token = jwt.sign(
             payload,
-            process.env.JWT_SECRET || 'yourSecretToken', // Use environment variable for secret
-            { expiresIn: 360000 } // Token expires in 100 hours
+            process.env.JWT_SECRET || 'yourSecretToken',
+            { expiresIn: 360000 }
         );
 
-        return res.json({ token, user: { id: user.id, username: user.username, email: user.email } });
+        // Set JWT as an HTTP-only cookie
+        res.cookie('token', token, cookieOptions);
+
+        return res.json({
+            user: { id: user.id, username: user.username, email: user.email }
+        });
     } catch (error) {
         console.error(error);
         if (error instanceof Error) {

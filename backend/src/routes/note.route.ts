@@ -6,7 +6,7 @@ import {
     updateNote,
     deleteNote,
 } from '../controllers/note.controller';
-import { auth } from '../middleware/auth.middleware';
+import { auth } from '../middlewares/auth.middleware';
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ const router = express.Router();
 router.post('/', auth, createNote);
 
 // Get all notes for a user
-router.get('/user/:userId', auth, getAllNotes);
+router.get('/user', auth, getAllNotes);
 
 // Get a single note by ID
 router.get('/:id', auth, getNoteById);

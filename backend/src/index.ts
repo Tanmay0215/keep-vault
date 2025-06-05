@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import express, { Express } from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import { connectDB } from './config/db';
 import routes from './routes';
 import morgan from 'morgan';
@@ -15,16 +16,14 @@ const app: Express = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:5173", // Your frontend URL
+    credentials: true // This is important for cookies
+}));
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
-
-// Error handling middleware
-// app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
-//     console.error(err.stack);
-//     res.status(500).json({ message: 'Something went wrong!' });
-// });
 
 // Routes
 app.use('/api', routes);
