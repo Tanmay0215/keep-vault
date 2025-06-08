@@ -5,8 +5,8 @@ import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
 import { Login } from './pages/auth/Login';
 import { Register } from './pages/auth/Register';
-import { NotesList } from './pages/NotesList';
-import { NoteEditor } from './pages/NoteEditor';
+import { NotesList } from './pages/notes/NotesList';
+import { NoteEditor } from './pages/notes/NoteEditor';
 import { PrivateRoute } from './components/common/PrivateRoute';
 import { useThemeStore } from './store/theme.store';
 

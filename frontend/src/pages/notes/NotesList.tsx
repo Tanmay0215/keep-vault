@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { notesAPI } from '../services/api';
+import { notesAPI } from '../../services/api';
+import { useNavigate } from 'react-router-dom';
 
 interface Note {
   _id: string;
@@ -11,6 +12,7 @@ interface Note {
 }
 
 export const NotesList = () => {
+  const navigate = useNavigate();
   const [notes, setNotes] = useState<Note[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -54,7 +56,9 @@ export const NotesList = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-900">My Notes</h1>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-200">
+          My Notes
+        </h1>
         <Link
           to="/notes/new"
           className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition-colors"
@@ -76,6 +80,7 @@ export const NotesList = () => {
         {notes.map((note) => (
           <div
             key={note._id}
+            onClick={() => navigate(`/notes/${note._id}`)}
             className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
           >
             <h2 className="text-xl font-semibold text-gray-900 mb-2">
