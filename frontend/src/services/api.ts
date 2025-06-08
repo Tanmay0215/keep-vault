@@ -19,7 +19,11 @@ export const authAPI = {
     return response.data;
   },
   register: async (username: string, email: string, password: string) => {
-    const response = await api.post('/auth/register', { username, email, password });
+    const response = await api.post('/auth/register', {
+      username,
+      email,
+      password,
+    });
     useAuthStore.getState().setAuth();
     return response.data;
   },

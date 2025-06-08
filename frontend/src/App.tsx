@@ -1,14 +1,14 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useEffect } from 'react'
-import { Layout } from './components/layout/Layout'
-import { Home } from './pages/Home'
-import { NotFound } from './pages/NotFound'
-import { Login } from './pages/auth/Login'
-import { Register } from './pages/auth/Register'
-import { NotesList } from './pages/NotesList'
-import { NoteEditor } from './pages/NoteEditor'
-import { PrivateRoute } from './components/common/PrivateRoute'
-import { useThemeStore } from './store/theme.store'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Layout } from './components/layout/Layout';
+import { Home } from './pages/Home';
+import { NotFound } from './pages/NotFound';
+import { Login } from './pages/auth/Login';
+import { Register } from './pages/auth/Register';
+import { NotesList } from './pages/NotesList';
+import { NoteEditor } from './pages/NoteEditor';
+import { PrivateRoute } from './components/common/PrivateRoute';
+import { useThemeStore } from './store/theme.store';
 
 const App = () => {
   const { theme } = useThemeStore();
@@ -36,7 +36,7 @@ const App = () => {
         </Routes>
       </Router>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
