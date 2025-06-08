@@ -17,7 +17,7 @@ router.post('/', auth, createNote);
 router.get('/user', auth, getAllNotes);
 
 // Get a single note by ID
-router.get('/:id', auth, getNoteById);
+router.get('/:id', getNoteById);
 
 // Update a note by ID
 router.put('/:id', auth, updateNote);

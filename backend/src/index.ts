@@ -17,7 +17,7 @@ connectDB();
 
 // Middleware
 app.use(cors({
-    origin: "http://localhost:5173", // Your frontend URL
+    origin: ["http://localhost:5173", "https://keep-vault.vercel.app"], // Your frontend URL
     credentials: true // This is important for cookies
 }));
 app.use(cookieParser());

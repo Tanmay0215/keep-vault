@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { notesAPI } from '../services/api';
+import { notesAPI } from '../../services/api';
 
 export const NoteEditor = () => {
   const { id } = useParams();
@@ -68,7 +68,7 @@ export const NoteEditor = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-6">
+        <h1 className="text-3xl font-bold text-gray-900 mb-6 dark:text-gray-200">
           {id ? 'Edit Note' : 'Create New Note'}
         </h1>
 

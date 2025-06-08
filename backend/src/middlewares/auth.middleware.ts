@@ -27,10 +27,7 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
     try {
         // Verify token
         const secret = process.env.JWT_SECRET || 'yourSecretToken';
-        console.log('Verifying token with secret:', secret.substring(0, 3) + '...');
-
         const decoded = jwt.verify(token, secret) as JwtPayload;
-        console.log('Token verified successfully, user:', decoded.user);
 
         // Add user from payload to request object
         req.user = decoded.user;
