@@ -1,5 +1,3 @@
-// Common TypeScript interfaces and types
-
 export interface User {
   id: string;
   username: string;
