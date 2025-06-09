@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { notesAPI } from '../services/api';
+import { notesAPI } from '../../services/api';
 
 interface Note {
   _id: string;

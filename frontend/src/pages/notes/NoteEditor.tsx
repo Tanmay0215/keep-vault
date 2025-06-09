@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { notesAPI } from '../services/api';
+import { notesAPI } from '../../services/api';
 
 export const NoteEditor = () => {
   const { id } = useParams();
