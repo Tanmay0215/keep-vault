@@ -9,6 +9,7 @@ import { NotesList } from './pages/notes/NotesList';
 import { NoteEditor } from './pages/notes/NoteEditor';
 import { PrivateRoute } from './components/common/PrivateRoute';
 import { useThemeStore } from './store/theme.store';
+import { NoteViewer } from './pages/notes/NoteViewer';
 
 const App = () => {
   const { theme } = useThemeStore();
@@ -24,12 +25,14 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
-
-            {/* Protected Routes */}
+            {/* Protected Routes */}            
             <Route path="notes" element={<PrivateRoute />}>
               <Route index element={<NotesList />} />
               <Route path="new" element={<NoteEditor />} />
-              <Route path=":id" element={<NoteEditor />} />
+              <Route path=":id">
+                <Route index element={<NoteViewer />} />
+                <Route path="edit" element={<NoteEditor />} />
+              </Route>
             </Route>
           </Route>
           <Route path="*" element={<NotFound />} />
