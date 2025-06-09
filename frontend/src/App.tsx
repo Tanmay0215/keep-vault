@@ -15,8 +15,9 @@ const App = () => {
   const { theme } = useThemeStore();
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-mode', theme);
+    document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
+  
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
       <Router>
@@ -25,7 +26,7 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
-            {/* Protected Routes */}            
+            {/* Protected Routes */}
             <Route path="notes" element={<PrivateRoute />}>
               <Route index element={<NotesList />} />
               <Route path="new" element={<NoteEditor />} />

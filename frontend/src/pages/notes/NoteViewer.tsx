@@ -23,8 +23,10 @@ export const NoteViewer = () => {
       try {
         if (!id) return;
         const data = await notesAPI.getNoteById(id);
-        setNote(data);      } catch (err) {
-        const errorMessage = err instanceof Error ? err.message : 'Failed to fetch note';
+        setNote(data);
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : 'Failed to fetch note';
         setError(errorMessage);
       } finally {
         setLoading(false);
@@ -35,14 +37,19 @@ export const NoteViewer = () => {
   }, [id]);
 
   const handleDelete = async () => {
-    if (!note?._id || !window.confirm('Are you sure you want to delete this note?')) {
+    if (
+      !note?._id ||
+      !window.confirm('Are you sure you want to delete this note?')
+    ) {
       return;
     }
 
     try {
       await notesAPI.deleteNote(note._id);
-      navigate('/notes');    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Failed to delete note';
+      navigate('/notes');
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : 'Failed to delete note';
       setError(errorMessage);
     }
   };
@@ -58,7 +65,10 @@ export const NoteViewer = () => {
   if (error) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-8">
-        <div className="bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <div
+          className="bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+          role="alert"
+        >
           <span className="block sm:inline">{error}</span>
         </div>
         <div className="mt-4">
@@ -75,7 +85,9 @@ export const NoteViewer = () => {
       <div className="max-w-3xl mx-auto px-4 py-8">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900">Note not found</h2>
-          <p className="mt-2 text-gray-600">The note you're looking for doesn't exist or has been deleted.</p>
+          <p className="mt-2 text-gray-600">
+            The note you're looking for doesn't exist or has been deleted.
+          </p>
           <div className="mt-6">
             <Link to="/notes" className="text-indigo-600 hover:text-indigo-800">
               ← Back to Notes
@@ -91,7 +103,10 @@ export const NoteViewer = () => {
       {/* Header */}
       <div className="mb-6">
         <div className="flex justify-between items-start">
-          <Link to="/notes" className="text-indigo-600 hover:text-indigo-800 mb-4">
+          <Link
+            to="/notes"
+            className="text-indigo-600 hover:text-indigo-800 mb-4"
+          >
             ← Back to Notes
           </Link>
           <div className="flex space-x-4">
@@ -114,11 +129,11 @@ export const NoteViewer = () => {
       {/* Note Content */}
       <div className="bg-white rounded-lg shadow-sm p-6">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">{note.title}</h1>
-        
+
         <div className="text-sm text-gray-500 mb-6">
           Last updated: {formatDate(note.updatedAt)}
         </div>
-        
+
         <div className="prose max-w-none">
           {note.content.split('\n').map((paragraph, index) => (
             <p key={index} className="mb-4 text-gray-700">
