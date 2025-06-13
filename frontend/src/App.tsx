@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
-import { Login } from './pages/auth/Login';
+import  Login  from './pages/auth/Login';
 import { Register } from './pages/auth/Register';
 import { NotesList } from './pages/notes/NotesList';
 import { NoteEditor } from './pages/notes/NoteEditor';
