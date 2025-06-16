@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { registerUser, loginUser } from '../controllers/user.controller';
+import { registerUser, loginUser,verifyEmail } from '../controllers/user.controller';
 import { auth } from '../middlewares/auth.middleware';
 
 const router = Router();
@@ -8,6 +8,11 @@ const router = Router();
 // @desc    Register a new user
 // @access  Public
 router.post('/register', registerUser);
+
+// @route   POST api/auth/verify-email
+// @desc    Verify user email
+// @access  Public
+router.post('/verify-email', verifyEmail);
 
 // @route   POST api/auth/login
 // @desc    Authenticate user & get token
