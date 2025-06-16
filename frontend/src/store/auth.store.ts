@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import Cookies from 'js-cookie';
 
 interface AuthState {
   isAuthenticated: boolean;
@@ -8,7 +7,7 @@ interface AuthState {
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
-  isAuthenticated: Cookies.get('token') !== undefined,
+  isAuthenticated: false,
   setAuth: () => {
     set({ isAuthenticated: true });
   },

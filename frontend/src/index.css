@@ -1,5 +1,16 @@
 @import 'tailwindcss';
 
+@custom-variant dark (& :where([data-theme=dark], [data-theme=dark] *));
+
+@layer base {
+    html {
+        @apply transition-colors duration-300;
+    }
+    body {
+        @apply bg-white dark:bg-gray-900;
+    }
+}
+
 @keyframes gradient {
   0%, 100% {
     background-size: 200% 200%;

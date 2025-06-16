@@ -9,13 +9,15 @@ import { NotesList } from './pages/notes/NotesList';
 import { NoteEditor } from './pages/notes/NoteEditor';
 import { PrivateRoute } from './components/common/PrivateRoute';
 import { useThemeStore } from './store/theme.store';
+import { NoteViewer } from './pages/notes/NoteViewer';
 
 const App = () => {
   const { theme } = useThemeStore();
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-mode', theme);
+    document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
+  
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
       <Router>
@@ -24,12 +26,14 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
-
             {/* Protected Routes */}
             <Route path="notes" element={<PrivateRoute />}>
               <Route index element={<NotesList />} />
               <Route path="new" element={<NoteEditor />} />
-              <Route path=":id" element={<NoteEditor />} />
+              <Route path=":id">
+                <Route index element={<NoteViewer />} />
+                <Route path="edit" element={<NoteEditor />} />
+              </Route>
             </Route>
           </Route>
           <Route path="*" element={<NotFound />} />
