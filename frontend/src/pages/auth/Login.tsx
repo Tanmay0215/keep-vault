@@ -1,14 +1,11 @@
-<Link
-to="/register"
-className="w-full flex justify-center py-3 px-4 border border-slate-300 dark:border-slate-700 rounded-xl shadow-sm text-base font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors duration-300"
->
- Create new account
-</Link>
 import { useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { authAPI } from '../../services/api';
+import axios from 'axios';
 
 export default function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -30,20 +27,16 @@ export default function Login() {
     setLoading(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve, reject) => {
-        setTimeout(() => {
-          if (formData.email === 'demo@example.com' && formData.password === 'password') {
-            resolve(undefined);
-          } else {
-            reject(new Error('Invalid email or password'));
-          }
-        }, 2000);
-      });
-      
-      alert('Login successful! (This is a demo)');
+      await authAPI.login(formData.email, formData.password);
+      navigate('/notes');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred during login');
+      if (axios.isAxiosError(err)) {
+        setError(
+          err.response?.data?.message || 'Invalid email or password'
+        );
+      } else {
+        setError('An unexpected error occurred');
+      }
     } finally {
       setLoading(false);
     }
@@ -221,13 +214,12 @@ export default function Login() {
                 </div>
 
                 <div className="mt-6">
-               
                   <Link
-                to="/register"
-                className="w-full flex justify-center py-3 px-4 border border-slate-300 dark:border-slate-700 rounded-xl shadow-sm text-base font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors duration-300"
-              >
-                 Create new account
-              </Link>
+                    to="/register"
+                    className="w-full flex justify-center py-3 px-4 border border-slate-300 dark:border-slate-700 rounded-xl shadow-sm text-base font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors duration-300"
+                  >
+                    Create new account
+                  </Link>
                 </div>
               </div>
             </div>
