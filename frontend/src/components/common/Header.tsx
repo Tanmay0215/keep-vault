@@ -18,12 +18,12 @@ export const Header = () => {
 
   return (
     <>
-      <header className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-b border-gray-200/50 dark:border-gray-700/50 sticky top-0 z-50 shadow-sm">
+      <header className="bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/60 sticky top-0 z-50 shadow-sm dark:shadow-gray-900/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link
               to="/"
-              className="text-2xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent hover:from-indigo-700 hover:via-purple-700 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105"
+              className="text-2xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 dark:hover:from-indigo-300 dark:hover:via-purple-300 dark:hover:to-pink-300 transition-all duration-300 transform hover:scale-105"
             >
               Keep Vault
             </Link>
@@ -31,7 +31,7 @@ export const Header = () => {
             {/* Mobile menu button */}
             <button
               type="button"
-              className="lg:hidden p-2.5 rounded-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100/80 dark:hover:bg-gray-800/80 transition-all duration-200 hover:scale-105"
+              className="lg:hidden p-2.5 rounded-xl text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100/80 dark:hover:bg-gray-800/90 transition-all duration-200 hover:scale-105 border border-transparent dark:border-gray-800/40 dark:hover:border-gray-700/60"
               onClick={() => setIsMobileMenuOpen(true)}
             >
               <span className="sr-only">Open menu</span>
@@ -55,7 +55,7 @@ export const Header = () => {
             <nav className="hidden lg:flex items-center space-x-8">
               <button
                 onClick={toggleTheme}
-                className="p-2.5 rounded-xl hover:bg-gray-100/80 dark:hover:bg-gray-800/80 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-all duration-200 hover:scale-105 group"
+                className="p-2.5 rounded-xl hover:bg-gray-100/80 dark:hover:bg-gray-800/90 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-all duration-200 hover:scale-105 group border border-transparent dark:border-gray-800/40 dark:hover:border-gray-700/60 hover:shadow-sm dark:hover:shadow-gray-900/30"
                 aria-label="Toggle theme"
               >
                 {theme === 'light' ? (
@@ -95,10 +95,10 @@ export const Header = () => {
                 <li>
                   <Link 
                     to="/" 
-                    className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-all duration-200 relative group"
+                    className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-all duration-200 relative group py-2"
                   >
                     Home
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 group-hover:w-full transition-all duration-300 rounded-full"></span>
                   </Link>
                 </li>
                 {isAuthenticated ? (
@@ -106,25 +106,25 @@ export const Header = () => {
                     <li>
                       <Link 
                         to="/notes" 
-                        className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-all duration-200 relative group"
+                        className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-all duration-200 relative group py-2"
                       >
                         My Notes
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 group-hover:w-full transition-all duration-300 rounded-full"></span>
                       </Link>
                     </li>
                     <li>
                       <Link 
                         to="/notes/new" 
-                        className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-all duration-200 relative group"
+                        className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-all duration-200 relative group py-2"
                       >
                         New Note
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 group-hover:w-full transition-all duration-300 rounded-full"></span>
                       </Link>
                     </li>
                     <li>
                       <button
                         onClick={handleLogout}
-                        className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 hover:shadow-lg hover:shadow-red-500/25 hover:scale-105"
+                        className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 dark:from-red-600 dark:to-red-700 dark:hover:from-red-700 dark:hover:to-red-800 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 hover:shadow-lg hover:shadow-red-500/25 dark:hover:shadow-red-600/30 hover:scale-105 border border-red-600/20 dark:border-red-500/30"
                       >
                         Logout
                       </button>
@@ -135,16 +135,16 @@ export const Header = () => {
                     <li>
                       <Link 
                         to="/login" 
-                        className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-all duration-200 relative group"
+                        className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium transition-all duration-200 relative group py-2"
                       >
                         Login
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400 group-hover:w-full transition-all duration-300 rounded-full"></span>
                       </Link>
                     </li>
                     <li>
                       <Link
                         to="/register"
-                        className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-2.5 rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-indigo-500/25 hover:scale-105"
+                        className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 dark:from-indigo-500 dark:to-purple-500 dark:hover:from-indigo-600 dark:hover:to-purple-600 text-white px-6 py-2.5 rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-indigo-500/25 dark:hover:shadow-indigo-500/40 hover:scale-105 border border-indigo-600/20 dark:border-indigo-400/30"
                       >
                         Register
                       </Link>

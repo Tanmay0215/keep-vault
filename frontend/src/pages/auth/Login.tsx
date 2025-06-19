@@ -49,7 +49,7 @@ export default function Login() {
   return (
     <div className={darkMode ? 'dark' : ''}>
       {/* Floating dark mode toggle */}
-      <button
+      {/* <button
         onClick={toggleDarkMode}
         className="fixed top-6 right-6 z-50 p-2.5 rounded-full bg-white/80 dark:bg-slate-800/80 shadow-lg backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 transition-all duration-300 hover:scale-105"
         aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
@@ -63,7 +63,7 @@ export default function Login() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
           </svg>
         )}
-      </button>
+      </button> */}
 
       <div className="min-h-screen flex bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         {/* Left side - Form */}
